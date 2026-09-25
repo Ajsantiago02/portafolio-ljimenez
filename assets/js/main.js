@@ -368,11 +368,13 @@
      12. Notificación tipo toast
      ------------------------------------------------------------------- */
   let toastTimer;
-  function showToast(message) {
+  function showToast(message, extraClass = '') {
     const toast = $('#toast');
     const text = $('#toast-text');
     if (!toast || !text) return;
 
+    toast.className = 'pointer-events-none fixed bottom-6 left-1/2 z-[70] -translate-x-1/2 translate-y-6 rounded-2xl border border-white/10 bg-ink-900/95 px-5 py-3 text-sm text-white opacity-0 shadow-2xl transition-all duration-400 dark:border-white/10';
+    if (extraClass) toast.classList.add(extraClass);
     text.textContent = message;
     toast.classList.remove('opacity-0', 'translate-y-6');
     clearTimeout(toastTimer);
@@ -468,7 +470,7 @@
       }
 
       window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank', 'noopener');
-      showToast('Abriendo WhatsApp…');
+      showToast('Abriendo WhatsApp… 🏴‍☠️', 'success');
       form.reset();
       Object.keys(fields).forEach(clearError);
     });
@@ -513,6 +515,132 @@
   }
 
   /* -------------------------------------------------------------------
+     17. Konami Code → Soul Society mode
+     ↑↑↓↓←→←→BA
+     ------------------------------------------------------------------- */
+  function initKonamiCode() {
+    const sequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','KeyB','KeyA'];
+    let idx = 0;
+    window.addEventListener('keydown', (e) => {
+      if (e.code === sequence[idx]) {
+        idx++;
+        if (idx === sequence.length) {
+          document.documentElement.classList.add('soul-society');
+          showToast('BANKAI... Soul Society mode activado 🏴‍☠️');
+          idx = 0;
+        }
+      } else {
+        idx = e.code === sequence[0] ? 1 : 0;
+      }
+    });
+  }
+
+  /* -------------------------------------------------------------------
+     18. Kon (mod-soul) — triple click en footer
+     ------------------------------------------------------------------- */
+  function initKonEasterEgg() {
+    const footer = $('footer');
+    if (!footer) return;
+    let clicks = 0, timer = null;
+    footer.addEventListener('click', () => {
+      clicks++;
+      if (clicks === 1) timer = setTimeout(() => clicks = 0, 600);
+      if (clicks === 3) {
+        clearTimeout(timer);
+        clicks = 0;
+        spawnKon();
+      }
+    });
+  }
+
+  function spawnKon() {
+    if (document.querySelector('.kon-hidden')) return;
+    const kon = document.createElement('div');
+    kon.className = 'kon-hidden';
+    kon.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(kon);
+    setTimeout(() => { kon.remove(); }, 8000);
+  }
+
+  /* -------------------------------------------------------------------
+     19. Modal de certificaciones
+     ------------------------------------------------------------------- */
+  function initCertModal() {
+    const modal = $('#cert-modal');
+    const closeBtn = $('#cert-modal-close');
+    const viewBtn = $('#cert-modal-view');
+    const overlay = modal?.querySelector('[data-cert-close]');
+    if (!modal) return;
+
+    // Función robusta para ocultar
+    const hideModal = () => {
+      modal.classList.add('hidden');
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.removeProperty('overflow');
+    };
+
+    const showModal = () => {
+      modal.classList.remove('hidden');
+      modal.style.display = 'flex';
+      modal.removeAttribute('aria-hidden');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const open = (card) => {
+      const badge = card.querySelector('.cert-badge');
+      const title = card.querySelector('.cert-title');
+      const instructor = card.querySelector('.cert-instructor');
+      const desc = card.querySelector('.cert-desc');
+      const skills = card.querySelectorAll('.cert-skills li');
+      const url = card.getAttribute('data-cert-url');
+
+      $('#cert-modal-badge').textContent = badge?.textContent || '';
+      $('#cert-modal-badge').className = 'cert-badge';
+      $('#cert-modal-title').textContent = title?.textContent || '';
+      $('#cert-modal-instructor').textContent = instructor?.textContent || '';
+      $('#cert-modal-desc').textContent = desc?.textContent || '';
+
+      const skillsContainer = $('#cert-modal-skills');
+      skillsContainer.innerHTML = '';
+      skills.forEach((s) => {
+        const span = document.createElement('span');
+        span.textContent = s.textContent;
+        skillsContainer.appendChild(span);
+      });
+
+      if (url) {
+        viewBtn.href = url;
+        viewBtn.classList.remove('hidden');
+      } else {
+        viewBtn.classList.add('hidden');
+      }
+
+      showModal();
+      // Focus trap
+      closeBtn?.focus();
+    };
+
+    const close = () => {
+      hideModal();
+    };
+
+    // Click en card
+    $$('.cert-card').forEach((card) => {
+      card.addEventListener('click', () => open(card));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); }
+      });
+    });
+
+    // Cerrar
+    [closeBtn, overlay].forEach((el) => el?.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
+    });
+  }
+
+  /* -------------------------------------------------------------------
      Arranque
      ------------------------------------------------------------------- */
   function init() {
@@ -526,11 +654,13 @@
     initCounters();
     initMagneticButtons();
     initCardSpotlight();
-    initCursorGlow();
     initBackToTop();
+    initCertModal();
     initCopyEmail();
     initContactForm();
     initSmoothScroll();
+    initKonamiCode();
+    initKonEasterEgg();
     initYear();
   }
 

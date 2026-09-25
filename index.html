@@ -88,8 +88,7 @@
     <div id="scroll-progress" class="h-full w-0 bg-gradient-to-r from-iris-500 via-violet-400 to-aqua-400"></div>
   </div>
 
-  <!-- Halo que sigue al cursor (solo escritorio) -->
-  <div id="cursor-glow" class="pointer-events-none fixed left-0 top-0 z-0 hidden h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-iris-500/10 opacity-0 blur-3xl transition-opacity duration-700 lg:block" aria-hidden="true"></div>
+  
 
   <!-- ======================= HEADER / NAVBAR ======================= -->
   <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-500">
@@ -171,9 +170,12 @@
 
     <!-- ======================= HERO ======================= -->
     <section id="inicio" class="relative flex min-h-[100svh] items-center overflow-hidden pb-20 pt-32 sm:pt-36">
-      <!-- Fondo: blobs + grilla + noise -->
+      <!-- Fondo: blobs + grilla + patrones de esencia + vignette -->
       <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
         <div class="bg-grid absolute inset-0"></div>
+        <div class="bg-essence absolute inset-0"></div>
+        <div class="reiatsu-lines absolute inset-0"></div>
+        <div class="hero-vignette absolute inset-0"></div>
         <div class="blob absolute -left-40 top-10 h-[34rem] w-[34rem] rounded-full bg-iris-500/25"></div>
         <div class="blob blob-delay absolute -right-32 bottom-0 h-[30rem] w-[30rem] rounded-full bg-aqua-400/20"></div>
         <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent dark:from-ink-950"></div>
@@ -621,7 +623,158 @@
       </div>
     </section>
 
-    <!-- ======================= HABILIDADES ======================= -->
+    <!-- ======================= CERTIFICACIONES ======================= -->
+    <section id="certificaciones" class="relative scroll-mt-24 py-24 sm:py-32">
+      <div class="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+        <header class="max-w-2xl">
+          <span class="eyebrow reveal">03 — Certificaciones</span>
+          <h2 class="section-title reveal reveal-delay-1 mt-5">Constancias <span class="text-gradient">y formación</span></h2>
+          <p class="reveal reveal-delay-2 mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+            Haz click en cada tarjeta para ver el detalle completo.
+          </p>
+        </header>
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="cert-card reveal" data-cert-url="assets/certs/Luis Armando Jiménez Santiago-1.pdf" tabindex="0" role="button" aria-label="Ver certificado: Desarrollo de IA - Programa con Agentes">
+            <div class="cert-badge">IA</div>
+            <div class="cert-content">
+              <h3 class="cert-title">Desarrollo de IA: Programa con Agentes</h3>
+              <p class="cert-instructor">Brais Moure</p>
+              <p class="cert-desc">Arquitectura de agentes autónomos, orquestación y memoria persistente.</p>
+              <ul class="cert-skills">
+                <li>Prompt Engineering</li><li>Autonomous Agents</li><li>Memory & Tools</li>
+              </ul>
+            </div>
+            <span class="cert-click-hint" aria-hidden="true">Click para ver</span>
+          </article>
+          <article class="cert-card reveal reveal-delay-1" data-cert-url="assets/certs/Luis Armando Jiménez Santiago-2.pdf" tabindex="0" role="button" aria-label="Ver certificado: Domina la IA con Gemini">
+            <div class="cert-badge">IA</div>
+            <div class="cert-content">
+              <h3 class="cert-title">Domina la IA con Gemini</h3>
+              <p class="cert-instructor">Santander Open Academy</p>
+              <p class="cert-desc">Modelos multimodales, function calling, grounding y Vertex AI.</p>
+              <ul class="cert-skills">
+                <li>Gemini Pro/Ultra</li><li>Function Calling</li><li>Vertex AI</li>
+              </ul>
+            </div>
+            <span class="cert-click-hint" aria-hidden="true">Click para ver</span>
+          </article>
+          <article class="cert-card reveal reveal-delay-2" data-cert-url="assets/certs/Luis Armando Jiménez Santiago-3.pdf" tabindex="0" role="button" aria-label="Ver certificado: Prompting Responsable">
+            <div class="cert-badge">IA</div>
+            <div class="cert-content">
+              <h3 class="cert-title">Prompting Responsable: Maximiza la IA en tu Negocio</h3>
+              <p class="cert-instructor">Santander Open Academy</p>
+              <p class="cert-desc">Ética, sesgos, seguridad y gobernanza en despliegue de LLMs.</p>
+              <ul class="cert-skills">
+                <li>AI Ethics</li><li>Bias Mitigation</li><li>Governance</li>
+              </ul>
+            </div>
+            <span class="cert-click-hint" aria-hidden="true">Click para ver</span>
+          </article>
+          <article class="cert-card reveal" data-cert-url="assets/certs/Luis Armando Jiménez Santiago-4.pdf" tabindex="0" role="button" aria-label="Ver certificado: Cursor con Python">
+            <div class="cert-badge">IA</div>
+            <div class="cert-content">
+              <h3 class="cert-title">Cursor con Python: Desarrollo Inteligente con IA</h3>
+              <p class="cert-instructor">Santander Open Academy</p>
+              <p class="cert-desc">IDE asistido por IA, refactoring automático, testing generativo.</p>
+              <ul class="cert-skills">
+                <li>Cursor IDE</li><li>AI Refactoring</li><li>Generative Testing</li>
+              </ul>
+            </div>
+            <span class="cert-click-hint" aria-hidden="true">Click para ver</span>
+          </article>
+          <article class="cert-card reveal reveal-delay-1" data-cert-url="assets/certs/Luis Armando Jiménez Santiago-5.pdf" tabindex="0" role="button" aria-label="Ver certificado: Python">
+            <div class="cert-badge">Dev</div>
+            <div class="cert-content">
+              <h3 class="cert-title">Python</h3>
+              <p class="cert-instructor">Santander Open Academy</p>
+              <p class="cert-desc">Fundamentos, POO, librerías estándar, async/await, testing.</p>
+              <ul class="cert-skills">
+                <li>Python 3.11+</li><li>AsyncIO</li><li>Pytest</li>
+              </ul>
+            </div>
+            <span class="cert-click-hint" aria-hidden="true">Click para ver</span>
+          </article>
+          <article class="cert-card reveal reveal-delay-2" data-cert-url="assets/certs/Luis Armando Jiménez Santiago-6.pdf" tabindex="0" role="button" aria-label="Ver certificado: Programación Web Avanzada">
+            <div class="cert-badge">Web</div>
+            <div class="cert-content">
+              <h3 class="cert-title">Programación Web Avanzada</h3>
+              <p class="cert-instructor">CCNUBIO</p>
+              <p class="cert-desc">Arquitectura frontend, performance, PWA, testing E2E.</p>
+              <ul class="cert-skills">
+                <li>Vue.js/React</li><li>PWA</li><li>E2E Testing</li>
+              </ul>
+            </div>
+            <span class="cert-click-hint" aria-hidden="true">Click para ver</span>
+          </article>
+          <article class="cert-card reveal" data-cert-url="assets/certs/Luis Armando Jiménez Santiago-7.pdf" tabindex="0" role="button" aria-label="Ver certificado: Introducción a Web Services">
+            <div class="cert-badge">Web</div>
+            <div class="cert-content">
+              <h3 class="cert-title">Introducción a Web Services</h3>
+              <p class="cert-instructor">CCNUBIO</p>
+              <p class="cert-desc">REST, SOAP, GraphQL, gRPC, autenticación, versionado.</p>
+              <ul class="cert-skills">
+                <li>REST/GraphQL</li><li>OAuth2/JWT</li><li>API Design</li>
+              </ul>
+            </div>
+            <span class="cert-click-hint" aria-hidden="true">Click para ver</span>
+          </article>
+          <article class="cert-card reveal reveal-delay-1" data-cert-url="assets/certs/Luis Armando Jiménez Santiago-8.pdf" tabindex="0" role="button" aria-label="Ver certificado: Seguridad y privacidad">
+            <div class="cert-badge">Sec</div>
+            <div class="cert-content">
+              <h3 class="cert-title">Seguridad y privacidad en el manejo de la información</h3>
+              <p class="cert-instructor">Formación complementaria</p>
+              <p class="cert-desc">Cifrado, OWASP Top 10, GDPR, seguridad en APIs.</p>
+              <ul class="cert-skills">
+                <li>OWASP</li><li>Encryption</li><li>GDPR</li>
+              </ul>
+            </div>
+            <span class="cert-click-hint" aria-hidden="true">Click para ver</span>
+          </article>
+          <article class="cert-card reveal reveal-delay-2" data-cert-url="assets/certs/Luis Armando Jiménez Santiago-9.pdf" tabindex="0" role="button" aria-label="Ver certificado: Administrador de Plataformas Digitales">
+            <div class="cert-badge">DevOps</div>
+            <div class="cert-content">
+              <h3 class="cert-title">Administrador de Plataformas Digitales de Aprendizaje</h3>
+              <p class="cert-instructor">Formación complementaria</p>
+              <p class="cert-desc">LMS, despliegue, monitorización, CI/CD, escalabilidad.</p>
+              <ul class="cert-skills">
+                <li>LMS Admin</li><li>CI/CD</li><li>Monitoring</li>
+              </ul>
+            </div>
+            <span class="cert-click-hint" aria-hidden="true">Click para ver</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal para certificados -->
+    <div id="cert-modal" class="fixed inset-0 z-[80] hidden" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title" style="display: none;">
+      <div class="absolute inset-0 bg-ink-950/90 backdrop-blur-sm" data-cert-close></div>
+      <div class="relative max-w-2xl mx-auto mt-20 p-6 sm:p-8">
+        <div class="cert-modal-card card-surface rounded-2xl overflow-hidden">
+          <div class="flex items-start justify-between gap-4 mb-6">
+            <div>
+              <span id="cert-modal-badge" class="cert-badge mb-2"></span>
+              <h2 id="cert-modal-title" class="font-display text-xl sm:text-2xl font-bold text-slate-900 dark:text-white"></h2>
+              <p id="cert-modal-instructor" class="text-sm text-slate-500 dark:text-slate-400 mt-1"></p>
+            </div>
+            <button id="cert-modal-close" type="button" class="shrink-0 p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition" aria-label="Cerrar">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+          <p id="cert-modal-desc" class="text-[15px] leading-relaxed text-slate-600 dark:text-slate-400 mb-6"></p>
+          <div id="cert-modal-skills" class="flex flex-wrap gap-2 mb-6"></div>
+          <div class="flex gap-3">
+            <a id="cert-modal-view" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary flex-1 justify-center hidden">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              Ver certificado (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- ======================= HABILIDADES ======================= -->
     <section id="habilidades" class="relative scroll-mt-24 py-24 sm:py-32">
       <div class="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
         <header class="max-w-2xl">
@@ -737,19 +890,7 @@
         </div>
 
         <!-- Formación -->
-        <div class="mt-20">
-          <h3 class="reveal font-display text-xl font-bold text-slate-900 sm:text-2xl dark:text-white">Formación y especialización</h3>
-          <p class="reveal reveal-delay-1 mt-3 max-w-2xl text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
-            Formación complementaria enfocada en IA aplicada, seguridad de la información y desarrollo de soluciones empresariales.
-          </p>
-
-          <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <div class="course-card reveal">
-              <span class="course-tag">IA</span>
-              <h4 class="mt-3 text-sm font-semibold text-slate-900 dark:text-white">Desarrollo de IA: Programa con Agentes</h4>
-              <p class="mt-1 font-mono text-[11px] text-slate-500 dark:text-slate-400">Brais Moure</p>
-            </div>
-            <div class="course-card reveal reveal-delay-1">
+        <div class="course-card reveal reveal-delay-1">
               <span class="course-tag">IA</span>
               <h4 class="mt-3 text-sm font-semibold text-slate-900 dark:text-white">Domina la IA con Gemini</h4>
               <p class="mt-1 font-mono text-[11px] text-slate-500 dark:text-slate-400">Santander Open Academy</p>
@@ -1062,7 +1203,21 @@
       </div>
     </div>
 
-    <p class="mt-10 text-center font-mono text-[11px] text-slate-500 dark:text-slate-400">
+    <p class="mt-10 text-center font-mono text-[11px] text-slate-500 dark:text-slate-400 relative">
+      <!-- Easter eggs sutiles: Sombrero de paja (One Piece) + Badge Shinigami (Bleach) -->
+      <span class="anime-easter-egg straw-hat" aria-hidden="true" title="One Piece">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20a8 8 0 0 1 0-16c0-2.2 1.8-4 4-4s4 1.8 4 4a8 8 0 0 1 0 16"/>
+          <path d="M4 20h16"/>
+          <ellipse cx="12" cy="16" rx="5" ry="2"/>
+        </svg>
+      </span>
+      <span class="anime-easter-egg soul-badge" aria-hidden="true" title="Bleach">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="6" width="16" height="12" rx="2"/>
+          <path d="M8 10h8M8 14h8M12 6v16"/>
+        </svg>
+      </span>
       © <span id="year">2026</span> Santiago Jiménez · Hecho con intención en Morelia, Mich.
     </p>
   </footer>

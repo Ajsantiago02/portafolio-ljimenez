@@ -28,6 +28,11 @@
   --grad-1:        #6d28d9;
   --grad-2:        #0e7490;
 
+  /* Toques de esencia: Bleach naranja & One Piece rojo/amarillo */
+  --anime-orange:  #ff6b00;   /* Bleach: reiatsu naranja / Ichigo */
+  --anime-red:     #e02020;   /* One Piece: Jolly Roger / Shanks */
+  --anime-gold:    #ffd700;   /* One Piece: sombrero de paja */
+
   --ring:          rgba(124, 58, 237, 0.5);
   --radius:        1.25rem;
 
@@ -50,6 +55,10 @@
 
   --grad-1:        #a78bfa;
   --grad-2:        #67e8f9;
+
+  --anime-orange:  #ff8533;   /* más vibrante en oscuro */
+  --anime-red:     #ff4444;
+  --anime-gold:    #ffe066;
 }
 
 /* --------------------------------------------------------------------------
@@ -84,7 +93,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-strong); }
 }
 
 /* --------------------------------------------------------------------------
-   3. Fondo decorativo del hero
+   3. Fondo decorativo del hero + patrones sutiles de esencia
    -------------------------------------------------------------------------- */
 .bg-grid {
   background-image:
@@ -94,6 +103,39 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-strong); }
   mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%);
   opacity: 0.7;
+}
+
+/* Patrón casi invisible: fragmento de máscara Hollow (Bleach) + espiral Fruta del Diablo (One Piece) */
+.bg-essence {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image:
+    /* Hollow mask fragments - esquinas */
+    radial-gradient(ellipse 120px 80px at 5% 5%, transparent 40%, var(--anime-orange) 42%, var(--anime-orange) 44%, transparent 46%),
+    radial-gradient(ellipse 120px 80px at 95% 5%, transparent 40%, var(--anime-orange) 42%, var(--anime-orange) 44%, transparent 46%),
+    radial-gradient(ellipse 120px 80px at 5% 95%, transparent 40%, var(--anime-orange) 42%, var(--anime-orange) 44%, transparent 46%),
+    radial-gradient(ellipse 120px 80px at 95% 95%, transparent 40%, var(--anime-orange) 42%, var(--anime-orange) 44%, transparent 46%),
+    /* Devil Fruit swirl - centro sutil */
+    radial-gradient(circle at 50% 50%, transparent 60%, var(--anime-red) 61%, var(--anime-red) 61.5%, transparent 62%);
+  background-repeat: no-repeat;
+}
+
+/* Patrón micro en secciones: líneas de reiatsu muy tenues */
+.reiatsu-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 200px,
+      var(--anime-orange) 200px,
+      var(--anime-orange) 200.5px
+    );
 }
 
 .blob {
@@ -107,8 +149,279 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-strong); }
   33%      { transform: translate3d(4%, -6%, 0) scale(1.08); }
   66%      { transform: translate3d(-5%, 4%, 0) scale(0.95); }
 }
-.blob       { animation: drift 22s var(--ease-out) infinite; }
-.blob-delay { animation-duration: 28s; animation-delay: -8s; }
+/* --------------------------------------------------------------------------
+   3c. Easter eggs y micro-detalles anime (descubribles)
+   -------------------------------------------------------------------------- */
+
+@keyframes shimmer {
+  0% { background-position: -200% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.section-title {
+  background-size: 200% 100%;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* Staggered entrance para tarjetas de proyecto */
+.project-card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  animation: card-enter 0.7s var(--ease-out) forwards;
+}
+.project-card:nth-child(1) { animation-delay: 0.05s; }
+.project-card:nth-child(2) { animation-delay: 0.12s; }
+.project-card:nth-child(3) { animation-delay: 0.19s; }
+.project-card:nth-child(4) { animation-delay: 0.26s; }
+.project-card:nth-child(5) { animation-delay: 0.33s; }
+.project-card:nth-child(6) { animation-delay: 0.4s; }
+@keyframes card-enter {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Partículas flotantes sutiles en skill cards */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 15% 20%, var(--anime-gold), transparent),
+    radial-gradient(1.5px 1.5px at 85% 30%, var(--anime-orange), transparent),
+    radial-gradient(1px 1px at 40% 80%, var(--anime-red), transparent);
+  opacity: 0;
+  animation: particles-drift 8s ease-in-out infinite;
+}
+.skill-card:hover::before { opacity: 0.6; }
+@keyframes particles-drift {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0; }
+  25%    { opacity: 0.3; }
+  50%    { transform: translateY(-12px) scale(1.1); opacity: 0.4; }
+  75%    { opacity: 0.2; }
+}
+
+/* Vignette sutil en hero */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 80% 70% at 50% 40%, transparent 50%, var(--bg) 100%);
+  opacity: 0.6;
+}
+
+/* Focus visible con toque anime */
+:focus-visible {
+  outline: 2px solid var(--anime-orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--anime-orange) 20%, transparent);
+}
+
+/* Marquee más elegante: pausa suave y reverse al final */
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+/* Scrollbar con toque anime */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--brand-2), var(--anime-orange));
+}
+::-webkit-scrollbar-thumb:hover { background: var(--anime-red); }
+
+/* ========================================================================
+   EASTER EGGS ANIME — SUTILES, DESCUBRIBLES, SOLO PARA QUIENES SABEN
+   ======================================================================== */
+
+/* 1. Bankai release al cargar: el título del hero "canta" su nombre */
+@keyframes bankai-chant {
+  0%   { filter: drop-shadow(0 0 0 transparent); }
+  33%  { filter: drop-shadow(0 0 30px var(--anime-orange)) drop-shadow(0 0 60px var(--anime-red)); }
+  66%  { filter: drop-shadow(0 0 15px var(--anime-gold)); }
+  100% { filter: drop-shadow(0 0 0 transparent); }
+}
+#inicio h1 { animation: bankai-chant 4s ease-in-out 2s infinite; }
+
+/* 2. Kon (el mod-soul) corre en el footer si haces click 3 veces rápido */
+.kon-hidden {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 100;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='32' cy='40' rx='20' ry='16' fill='%23ff6b00'/%3E%3Cellipse cx='32' cy='32' rx='14' ry='12' fill='%23fff'/%3E%3Cellipse cx='26' cy='30' rx='3' ry='4' fill='%23000'/%3E%3Cellipse cx='38' cy='30' rx='3' ry='4' fill='%23000'/%3E%3Cpath d='M20 44 Q32 38 44 44' stroke='%23000' stroke-width='2' fill='none'/%3E%3Cellipse cx='32' cy='52' rx='18' ry='4' fill='%23ff6b00' opacity='0.3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: kon-run 0.6s steps(4) infinite, kon-move 3s ease-in-out infinite alternate;
+}
+@keyframes kon-run { to { background-position-x: -256px; } }
+@keyframes kon-move { 0% { transform: translateX(0) rotate(-5deg); } 100% { transform: translateX(120px) rotate(5deg); } }
+
+/* 3. Hollow mask fragment en skill cards (muy sutil, solo en hover prolongado) */
+.skill-card {
+  position: relative;
+}
+.skill-card::after {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 16px;
+  opacity: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16'%3E%3Cellipse cx='12' cy='8' rx='11' ry='7' fill='none' stroke='%23ff6b00' stroke-width='1.5'/%3E%3Cellipse cx='12' cy='8' rx='4' ry='3' fill='%23ff6b00' opacity='0.6'/%3E%3C/svg%3E");
+  background-size: contain;
+  transition: opacity 0.8s ease, transform 0.8s var(--ease-out);
+  transform: scale(0.5) rotate(-15deg);
+}
+.skill-card:hover::after {
+  opacity: 0.15;
+  transform: scale(1) rotate(0deg);
+}
+
+/* 4. Devil Fruit swirl en el cursor del marquee (solo en hover) */
+.marquee:hover .marquee-group span::before {
+  content: "🍎";
+  margin-right: 0.5rem;
+  opacity: 0.4;
+  animation: fruit-spin 1s linear infinite;
+}
+@keyframes fruit-spin { to { transform: rotate(360deg); } }
+
+/* 5. Zangetsu flash al hacer click en botón primario */
+@keyframes zangetsu-flash {
+  0%   { box-shadow: 0 0 0 0 var(--anime-orange), 0 0 0 0 var(--anime-red); }
+  50%  { box-shadow: 0 0 40px 20px var(--anime-orange), 0 0 80px 30px var(--anime-red); }
+  100% { box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent; }
+}
+.btn-primary:active { animation: zangetsu-flash 0.3s ease-out; }
+
+/* 6. Hollow hole pulse en avatar del hero (el logo SJ) */
+#inicio .relative.grid {
+  position: relative;
+}
+#inicio .relative.grid::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid var(--anime-orange);
+  opacity: 0;
+  animation: hollow-pulse 3s ease-in-out infinite;
+}
+@keyframes hollow-pulse {
+  0%, 100% { transform: scale(1); opacity: 0; box-shadow: 0 0 0 0 var(--anime-orange); }
+  20%    { opacity: 0.4; box-shadow: 0 0 20px 4px var(--anime-orange); }
+  40%    { transform: scale(1.08); opacity: 0.2; }
+  60%    { opacity: 0; }
+}
+
+/* 7. Gear 2 steam en tarjetas de proyecto al hover prolongado (>1s) */
+.project-card {
+  position: relative;
+}
+.project-card::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--anime-red), transparent);
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+.project-card:hover::after {
+  width: 80%;
+  opacity: 0.6;
+  animation: gear2-steam 0.5s ease-in-out infinite;
+}
+@keyframes gear2-steam {
+  0%, 100% { filter: blur(0px); opacity: 0.6; }
+  50%      { filter: blur(4px); opacity: 0.3; transform: translateX(-50%) translateY(-2px); }
+}
+
+/* 8. Observación Haki: elementos reaccionan antes de que el mouse llegue */
+@keyframes haki-sense {
+  0% { box-shadow: 0 0 0 0 var(--anime-gold); }
+  100% { box-shadow: 0 0 30px 10px transparent; }
+}
+.feature-item,
+.contact-item,
+.timeline-card,
+.course-card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.feature-item:hover,
+.contact-item:hover,
+.timeline-card:hover,
+.course-card:hover {
+  box-shadow: 0 0 20px 4px color-mix(in srgb, var(--anime-gold) 30%, transparent);
+}
+
+/* 9. Devil Fruit "swirl" en background del formulario */
+#contacto .rounded-\[2rem\] {
+  position: relative;
+  overflow: hidden;
+}
+#contacto .rounded-\[2rem\]::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 70%, var(--anime-red) 0%, transparent 40%),
+              radial-gradient(circle at 70% 30%, var(--anime-gold) 0%, transparent 40%);
+  opacity: 0.02;
+  animation: df-swirl 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes df-swirl { to { transform: rotate(360deg); } }
+
+/* 10. Bankai final: konami code (↑↑↓↓←→←→BA) activa modo "Soul Society" */
+@keyframes soul-society-enter {
+  0% { filter: hue-rotate(0deg) saturate(1); }
+  100% { filter: hue-rotate(30deg) saturate(1.2) contrast(1.1); }
+}
+html.soul-society {
+  animation: soul-society-enter 2s ease-out forwards;
+}
+html.soul-society .btn-primary {
+  background: linear-gradient(120deg, var(--anime-red), var(--anime-orange), var(--anime-gold)) !important;
+}
+html.soul-society .nav-link.is-active::after {
+  background: linear-gradient(90deg, var(--anime-gold), var(--anime-orange)) !important;
+}
+html.soul-society .stat-number {
+  filter: drop-shadow(0 0 8px var(--anime-gold));
+}
+html.soul-society #scroll-progress {
+  background: linear-gradient(90deg, var(--anime-gold), var(--anime-orange), var(--anime-red)) !important;
+}
+html.soul-society .anime-easter-egg {
+  opacity: 0.6 !important;
+  animation: kon-move 2s ease-in-out infinite alternate !important;
+}
+
+/* 11. Texto "Nakama" en el toast si es éxito */
+#toast.success::before {
+  content: "🏴‍☠️ ";
+  margin-right: 0.4rem;
+}
+
+/* 12. Micro-interacción: scroll indicator "Shunpo" */
+@keyframes shunpo-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+  50%      { transform: translateX(-50%) translateY(8px); opacity: 1; }
+}
+#inicio + .hidden.lg\\:flex {
+  animation: shunpo-bounce 1.5s ease-in-out infinite;
+}
 
 /* --------------------------------------------------------------------------
    4. Navbar
@@ -119,6 +432,17 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-strong); }
   box-shadow: 0 10px 40px -18px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
+}
+
+/* Barra de progreso de lectura: Getsuga Tensho */
+#scroll-progress {
+  background: linear-gradient(90deg, var(--anime-orange), var(--anime-red), var(--anime-gold));
+  background-size: 200% 100%;
+  animation: progress-flow 3s linear infinite;
+}
+@keyframes progress-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
 .nav-link {
@@ -142,7 +466,8 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-strong); }
   width: 18px;
   height: 2px;
   border-radius: 99px;
-  background: linear-gradient(90deg, var(--brand-1), var(--brand-3));
+  background: linear-gradient(90deg, var(--anime-orange), var(--anime-red));
+  box-shadow: 0 0 8px var(--anime-orange);
 }
 
 /* Hamburguesa animada */
@@ -181,12 +506,12 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-strong); }
 #mobile-menu.is-open .mobile-link:nth-child(4) { transition-delay: 0.24s; }
 #mobile-menu.is-open .mobile-link:nth-child(5) { transition-delay: 0.30s; }
 #mobile-menu.is-open .mobile-link:nth-child(6) { transition-delay: 0.36s; }
-.mobile-link:hover { color: var(--brand-3); }
+.mobile-link:hover { color: var(--anime-gold); text-shadow: 0 0 12px var(--anime-gold); }
 .mobile-index {
   font-family: "JetBrains Mono", monospace;
   font-size: 0.7rem;
   font-weight: 400;
-  color: var(--brand-3);
+  color: var(--anime-orange);
   opacity: 0.6;
 }
 
@@ -313,6 +638,31 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-strong); }
   box-shadow: 0 30px 70px -32px rgba(124, 58, 237, 0.55);
 }
 
+/* Reiatsu burst: anillo expansivo naranja al hacer hover (Bankai feel) */
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  border: 2px solid var(--anime-orange);
+  transform: scale(0.92);
+  transition: opacity 0.3s var(--ease-out), transform 0.6s var(--ease-out), border-color 0.3s;
+  box-shadow: 0 0 0 0 transparent;
+}
+.project-card:hover::after {
+  opacity: 1;
+  transform: scale(1.04);
+  border-color: var(--anime-red);
+  box-shadow: 0 0 24px 4px var(--anime-orange);
+  animation: reiatsu-pulse 1.2s var(--ease-out) forwards;
+}
+@keyframes reiatsu-pulse {
+  0%   { transform: scale(0.92); opacity: 1; box-shadow: 0 0 0 0 var(--anime-orange); }
+  100% { transform: scale(1.08); opacity: 0; box-shadow: 0 0 30px 12px transparent; }
+}
+
 /* Halo que sigue al cursor dentro de la tarjeta */
 .project-card::before {
   content: "";
@@ -434,6 +784,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-strong); }
   text-transform: uppercase;
   letter-spacing: 0.22em;
   color: var(--brand-1);
+  position: relative;
 }
 .dark .eyebrow { color: var(--brand-3); }
 .eyebrow::before {
@@ -443,6 +794,19 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-strong); }
   background: currentColor;
   opacity: 0.5;
 }
+.eyebrow::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--anime-orange), var(--anime-red));
+  transition: width 0.4s var(--ease-out);
+  opacity: 0;
+}
+section:hover .eyebrow::after,
+.header:hover .eyebrow::after { width: 100%; opacity: 1; }
 
 .section-title {
   font-family: Sora, system-ui, sans-serif;
@@ -865,9 +1229,226 @@ a.contact-item:hover {
 .reveal-delay-5 { transition-delay: 0.40s; }
 
 /* --------------------------------------------------------------------------
-   14. Preloader
+   14. Preloader — Bankai release
    -------------------------------------------------------------------------- */
+#preloader {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.7s var(--ease-out);
+}
 #preloader.is-done { opacity: 0; pointer-events: none; }
+
+/* Animación Bankai: el logo "libera" su reiatsu */
+@keyframes bankai-release {
+  0%   { transform: scale(1); box-shadow: 0 0 0 0 var(--anime-orange); }
+  30%  { transform: scale(1.15); box-shadow: 0 0 40px 20px var(--anime-orange); }
+  60%  { transform: scale(0.95); box-shadow: 0 0 20px 10px var(--anime-red); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
+}
+#preloader .relative.grid { animation: bankai-release 1.8s var(--ease-out) infinite; }
+
+/* Barra preloader: Getsuga Tensho */
+#preloader-bar {
+  background: linear-gradient(90deg, var(--anime-orange), var(--anime-red), var(--anime-gold));
+  background-size: 200% 100%;
+  animation: preloader-flow 1.2s linear infinite;
+}
+@keyframes preloader-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* --------------------------------------------------------------------------
+   14b. Certificaciones — Cards + Modal
+   -------------------------------------------------------------------------- */
+.cert-card {
+  position: relative;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  cursor: pointer;
+  transition: transform 0.4s var(--ease-out), border-color 0.3s, box-shadow 0.4s var(--ease-out);
+  animation: card-enter 0.6s var(--ease-out) forwards;
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+}
+.dark .cert-card { background: linear-gradient(165deg, rgba(255,255,255,0.05), rgba(255,255,255,0.012)); }
+.cert-card:nth-child(1) { animation-delay: 0.05s; }
+.cert-card:nth-child(2) { animation-delay: 0.12s; }
+.cert-card:nth-child(3) { animation-delay: 0.19s; }
+.cert-card:nth-child(4) { animation-delay: 0.26s; }
+.cert-card:nth-child(5) { animation-delay: 0.33s; }
+.cert-card:nth-child(6) { animation-delay: 0.4s; }
+.cert-card:nth-child(7) { animation-delay: 0.47s; }
+.cert-card:nth-child(8) { animation-delay: 0.54s; }
+.cert-card:nth-child(9) { animation-delay: 0.61s; }
+.cert-card:hover,
+.cert-card:focus-visible {
+  transform: translateY(-6px) scale(1.01);
+  border-color: color-mix(in srgb, var(--anime-orange) 50%, transparent);
+  box-shadow: 0 24px 50px -20px color-mix(in srgb, var(--anime-orange) 40%, transparent);
+}
+.cert-card:focus-visible { outline: none; }
+
+.cert-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--anime-orange);
+  background: color-mix(in srgb, var(--anime-orange) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--anime-orange) 30%, transparent);
+  margin-bottom: 0.75rem;
+}
+
+.cert-content { position: relative; z-index: 1; }
+.cert-title {
+  font-family: Sora, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text-strong);
+  line-height: 1.3;
+}
+.cert-instructor {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--brand-2);
+}
+.dark .cert-instructor { color: var(--brand-3); }
+.cert-desc {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.cert-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+.cert-skills li {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  font-weight: 500;
+  padding: 0.18rem 0.5rem;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--bg-soft) 70%, transparent);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: color 0.25s, border-color 0.25s;
+}
+.cert-skills li:hover { color: var(--anime-orange); border-color: var(--anime-orange); }
+
+.cert-click-hint {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+  pointer-events: none;
+}
+.cert-card:hover .cert-click-hint { opacity: 1; transform: translateX(0); }
+
+/* Modal */
+#cert-modal { display: flex; align-items: flex-start; justify-content center; padding: 2rem 1rem; }
+.cert-modal-card {
+  position: relative;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: modal-enter 0.35s var(--ease-out);
+}
+@keyframes modal-enter {
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.cert-modal-card .cert-badge { margin-bottom: 0.5rem; }
+#cert-modal-close { position: absolute; top: 1rem; right: 1rem; }
+#cert-modal-close-btn { margin-top: 0.5rem; }
+#cert-modal-skills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+#cert-modal-skills span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  font-weight: 500;
+  padding: 0.18rem 0.5rem;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--bg-soft) 70%, transparent);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+#cert-modal-view:not(.hidden) { display: flex; }
+
+/* --------------------------------------------------------------------------
+   14b. Easter eggs footer — sutiles y descubribles
+   -------------------------------------------------------------------------- */
+.anime-easter-egg {
+  position: absolute;
+  bottom: 100%;
+  width: 28px;
+  height: 28px;
+  opacity: 0.12;
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-spring);
+  pointer-events: none;
+}
+.anime-easter-egg:hover,
+footer:hover .anime-easter-egg { opacity: 0.35; transform: translateY(-4px); }
+.straw-hat {
+  left: 50%;
+  margin-left: -140px;
+  color: var(--anime-gold);
+  filter: drop-shadow(0 0 6px var(--anime-gold));
+}
+.soul-badge {
+  right: 50%;
+  margin-right: -140px;
+  color: var(--anime-orange);
+  filter: drop-shadow(0 0 6px var(--anime-orange));
+}
+
+
+
+/* --------------------------------------------------------------------------
+   14c. Back to top — Shunpo
+   -------------------------------------------------------------------------- */
+#back-to-top {
+  background: linear-gradient(135deg, var(--anime-orange), var(--anime-red));
+  box-shadow: 0 8px 24px -8px var(--anime-orange);
+}
+#back-to-top:hover {
+  background: linear-gradient(135deg, var(--anime-red), var(--anime-orange));
+  box-shadow: 0 12px 32px -10px var(--anime-red);
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   14d. Toast — Hell Butterfly
+   -------------------------------------------------------------------------- */
+#toast {
+  border-color: var(--anime-orange);
+  background: linear-gradient(135deg, var(--ink-900), var(--ink-950));
+  box-shadow: 0 0 20px -5px var(--anime-orange);
+}
+.dark #toast {
+  border-color: var(--anime-orange);
+  background: linear-gradient(135deg, var(--ink-900), var(--ink-950));
+  box-shadow: 0 0 20px -5px var(--anime-orange);
+}
 
 /* --------------------------------------------------------------------------
    15. Accesibilidad
