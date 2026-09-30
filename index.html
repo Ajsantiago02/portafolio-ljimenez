@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html lang="es" class="dark scroll-smooth">
+<html lang="es" class="dark scroll-smooth" style="touch-action: manipulation;">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#05060a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#05060a" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
 
@@ -65,7 +70,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
-<body class="bg-white font-sans text-slate-700 antialiased selection:bg-iris-500/30 selection:text-iris-700 dark:bg-ink-950 dark:text-slate-300">
+<body class="bg-white font-sans touch-action-manipulation text-slate-700 antialiased selection:bg-iris-500/30 selection:text-iris-700 dark:bg-ink-950 dark:text-slate-300">
 
   <!-- ============================================================
        PRELOADER — pantalla de carga con la marca
@@ -437,6 +442,7 @@
                 <ul class="mt-6 flex flex-wrap gap-2">
                   <li class="chip">Identidad Visual</li><li class="chip">Estrategia</li><li class="chip">Figma</li>
                   <li class="chip">Adobe Illustrator</li><li class="chip">Photoshop</li><li class="chip">UX/UI</li>
+                  <li class="chip">Bootstrap 5.3</li><li class="chip">Google Fonts</li><li class="chip">Varnish</li><li class="chip">jsDelivr CDN</li><li class="chip">Fastly</li><li class="chip">GitHub Pages</li>
                 </ul>
                 <div class="mt-8 flex flex-wrap gap-3">
                   <a href="https://artdesignlucka.github.io/branding/" target="_blank" rel="noopener noreferrer" class="btn-primary !px-4 !py-2.5 !text-[13px]">
@@ -473,8 +479,8 @@
 
           <!-- ============ PROYECTO 02 ============ -->
           <article class="project-card reveal">
-            <div class="project-cover project-cover-aqua" aria-hidden="true">
-              <span class="project-cover-glyph">✦</span>
+            <div class="project-cover" aria-hidden="true">
+              <img src="assets/images/projects/nails.svg" alt="Angie Solis Nails Preview" loading="lazy" class="w-full h-full object-cover">
               <span class="project-badge">Landing</span>
             </div>
             <div class="p-7">
@@ -489,7 +495,7 @@
                 catálogo de servicios y solicitud de cita vía WhatsApp.
               </p>
               <ul class="mt-5 flex flex-wrap gap-2">
-                <li class="chip">HTML5</li><li class="chip">CSS3</li><li class="chip">JavaScript</li><li class="chip">Responsive</li>
+                <li class="chip">Lucide</li><li class="chip">Google Fonts</li><li class="chip">Varnish</li><li class="chip">Fastly CDN</li><li class="chip">GitHub Pages</li>
               </ul>
               <div class="mt-7 flex flex-wrap gap-3">
                 <a href="https://ajsantiago02.github.io/nails/" target="_blank" rel="noopener noreferrer" class="btn-primary !px-4 !py-2.5 !text-[13px]">Ver demo</a>
@@ -500,8 +506,8 @@
 
           <!-- ============ PROYECTO 03 ============ -->
           <article class="project-card reveal reveal-delay-1">
-            <div class="project-cover project-cover-iris" aria-hidden="true">
-              <span class="project-cover-glyph">⌘</span>
+            <div class="project-cover" aria-hidden="true">
+              <img src="assets/images/projects/lucka.svg" alt="Lucka Art Design Preview" loading="lazy" class="w-full h-full object-cover">
               <span class="project-badge">Open Source</span>
             </div>
             <div class="p-7">
@@ -529,8 +535,8 @@
 
           <!-- ============ PROYECTO 04 ============ -->
           <article class="project-card reveal">
-            <div class="project-cover project-cover-amber" aria-hidden="true">
-              <span class="project-cover-glyph">▤</span>
+            <div class="project-cover" aria-hidden="true">
+              <img src="assets/images/projects/pdf.svg" alt="Finkok PDF Preview" loading="lazy" class="w-full h-full object-cover">
               <span class="project-badge">Producto</span>
             </div>
             <div class="p-7">
@@ -545,7 +551,7 @@
                 Usuario y Empresarial, API REST y soporte de complementos (Timbre Fiscal Digital, Pagos 2.0, Nómina 1.2 y Carta Porte 3.0).
               </p>
               <ul class="mt-5 flex flex-wrap gap-2">
-                <li class="chip">PHP</li><li class="chip">REST API</li><li class="chip">CFDI 4.0</li><li class="chip">PAC</li><li class="chip">MySQL</li>
+                <li class="chip">Nginx</li><li class="chip">Bootstrap</li><li class="chip">Google Fonts</li><li class="chip">Bootstrap Icons</li><li class="chip">SweetAlert2</li><li class="chip">GA4</li>
               </ul>
               <div class="mt-7 flex flex-wrap gap-3">
                 <a href="https://pdf.finkok.com/" target="_blank" rel="noopener noreferrer" class="btn-primary !px-4 !py-2.5 !text-[13px]">Ver demo</a>
@@ -555,8 +561,8 @@
 
           <!-- ============ PROYECTO 05 ============ -->
           <article class="project-card reveal reveal-delay-1">
-            <div class="project-cover project-cover-emerald" aria-hidden="true">
-              <span class="project-cover-glyph">⚙</span>
+            <div class="project-cover" aria-hidden="true">
+              <img src="assets/images/projects/manpower.svg" alt="Manpower Portal Preview" loading="lazy" class="w-full h-full object-cover">
               <span class="project-badge">Corporativo</span>
             </div>
             <div class="p-7">
@@ -571,7 +577,7 @@
                 conexiones seguras a servicios de facturación y módulos de autogestión para el cliente.
               </p>
               <ul class="mt-5 flex flex-wrap gap-2">
-                <li class="chip">Python</li><li class="chip">PHP</li><li class="chip">SQL Server</li><li class="chip">Windows Services</li>
+                <li class="chip">Django</li><li class="chip">Python</li><li class="chip">Nginx</li><li class="chip">Bootstrap 4.5</li><li class="chip">Font Awesome</li><li class="chip">jQuery 3.3.1</li><li class="chip">Popper</li><li class="chip">ECharts</li><li class="chip">Chart.js</li><li class="chip">jQuery Sparklines</li><li class="chip">SweetAlert2</li><li class="chip">Select2</li><li class="chip">Moment.js</li><li class="chip">jQuery UI</li><li class="chip">core-js</li>
               </ul>
               <div class="mt-7 flex flex-wrap gap-3">
                 <a href="https://manpower.finkok.com/" target="_blank" rel="noopener noreferrer" class="btn-primary !px-4 !py-2.5 !text-[13px]">Ver demo</a>
@@ -584,8 +590,9 @@
             <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
               <div>
                 <div class="project-cover project-cover-violet sm:hidden" aria-hidden="true">
-                  <span class="project-cover-glyph">◈</span>
-                </div>
+              <img src="assets/images/projects/herbalife.svg" alt="Herbalife Portal Preview" loading="lazy" class="w-full h-full object-cover">
+              <span class="project-badge">Corporativo</span>
+            </div>
                 <div class="flex flex-wrap items-center gap-2">
                   <span class="chip chip-accent">Autenticación</span>
                   <span class="chip chip-muted">Corporativo</span>
@@ -619,7 +626,31 @@
               </div>
             </div>
           </article>
-        </div>
+
+          <!-- ============ PROYECTO 07 ============ -->
+          <article class="project-card reveal">
+            <div class="project-cover" aria-hidden="true">
+              <img src="assets/images/projects/addendador.svg" alt="Addendador Finkok Preview" loading="lazy" class="w-full h-full object-cover">
+              <span class="project-badge">Corporativo</span>
+            </div>
+            <div class="p-7">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="chip chip-accent">Addendas CFDI</span>
+                <span class="chip chip-muted">Corporativo</span>
+              </div>
+              <h3 class="mt-4 font-display text-xl font-bold text-slate-900 dark:text-white">Addendador Finkok</h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-slate-600 dark:text-slate-400">
+                <strong class="text-slate-800 dark:text-slate-200">Reto.</strong> Gestión centralizada de addendas para comprobantes CFDI 4.0 en entorno corporativo multi-cliente.
+                <br /><strong class="text-slate-800 dark:text-slate-200">Solución.</strong> Panel de administración con autenticación, catálogo de addendas por cliente, validación de esquemas y bitácora de cambios para auditoría fiscal.
+              </p>
+              <ul class="mt-5 flex flex-wrap gap-2">
+                <li class="chip">Django</li><li class="chip">Python</li><li class="chip">Nginx</li><li class="chip">Bootstrap 5</li><li class="chip">Google Analytics (GA4)</li><li class="chip">Font Awesome</li><li class="chip">Google Fonts</li><li class="chip">jsDelivr CDN</li>
+              </ul>
+              <div class="mt-7 flex flex-wrap gap-3">
+                <a href="https://addendador.finkok.com/" target="_blank" rel="noopener noreferrer" class="btn-primary !px-4 !py-2.5 !text-[13px]">Ver demo</a>
+              </div>
+            </div>
+          </article>        </div>
       </div>
     </section>
 
@@ -867,60 +898,12 @@
             </ul>
           </div>
 
-          <div class="skill-card reveal reveal-delay-2">
-            <span class="skill-icon" aria-hidden="true">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19 7 14l9-9 5 5-9 9z"/><path d="M5 21h6"/></svg>
-            </span>
-            <h3 class="skill-title">Diseño &amp; branding</h3>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              <li class="chip">Identidad Visual</li><li class="chip">Branding</li><li class="chip">UX/UI</li>
-              <li class="chip">Figma</li><li class="chip">Illustrator</li><li class="chip">Photoshop</li>
-            </ul>
-          </div>
+          
 
-          <div class="skill-card reveal reveal-delay-3">
-            <span class="skill-icon" aria-hidden="true">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
-            </span>
-            <h3 class="skill-title">IA &amp; automatización</h3>
-            <ul class="mt-4 flex flex-wrap gap-2">
-              <li class="chip">Prompt Engineering</li><li class="chip">Agentes de IA</li><li class="chip">Automatización</li><li class="chip">IA aplicada al desarrollo</li>
-            </ul>
-          </div>
+          
         </div>
 
-        <!-- Formación -->
-        <div class="course-card reveal reveal-delay-1">
-              <span class="course-tag">IA</span>
-              <h4 class="mt-3 text-sm font-semibold text-slate-900 dark:text-white">Domina la IA con Gemini</h4>
-              <p class="mt-1 font-mono text-[11px] text-slate-500 dark:text-slate-400">Santander Open Academy</p>
-            </div>
-            <div class="course-card reveal reveal-delay-2">
-              <span class="course-tag">IA</span>
-              <h4 class="mt-3 text-sm font-semibold text-slate-900 dark:text-white">Prompting Responsable: Maximiza la IA en tu Negocio</h4>
-              <p class="mt-1 font-mono text-[11px] text-slate-500 dark:text-slate-400">Santander Open Academy</p>
-            </div>
-            <div class="course-card reveal">
-              <span class="course-tag">IA</span>
-              <h4 class="mt-3 text-sm font-semibold text-slate-900 dark:text-white">Cursor con Python: Desarrollo Inteligente con IA</h4>
-              <p class="mt-1 font-mono text-[11px] text-slate-500 dark:text-slate-400">Santander Open Academy</p>
-            </div>
-            <div class="course-card reveal reveal-delay-1">
-              <span class="course-tag">Dev</span>
-              <h4 class="mt-3 text-sm font-semibold text-slate-900 dark:text-white">Python</h4>
-              <p class="mt-1 font-mono text-[11px] text-slate-500 dark:text-slate-400">Santander Open Academy</p>
-            </div>
-            <div class="course-card reveal reveal-delay-2">
-              <span class="course-tag">Web</span>
-              <h4 class="mt-3 text-sm font-semibold text-slate-900 dark:text-white">Programación Web Avanzada · Introducción a Web Services</h4>
-              <p class="mt-1 font-mono text-[11px] text-slate-500 dark:text-slate-400">CCNUBIO</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================= TRAYECTORIA ======================= -->
+        <!-- ======================= TRAYECTORIA ======================= -->
     <section id="trayectoria" class="relative scroll-mt-24 py-24 sm:py-32">
       <div class="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
         <header class="max-w-2xl">

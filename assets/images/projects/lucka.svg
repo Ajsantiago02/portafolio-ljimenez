@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Vista previa de Template LJ">
+  <defs>
+    <linearGradient id="lj-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d0a16"/>
+      <stop offset="1" stop-color="#16102a"/>
+    </linearGradient>
+    <radialGradient id="lj-glow" cx="0.15" cy="0.1" r="0.9">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lj-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#lj-bg)"/>
+  <rect width="640" height="400" fill="url(#lj-glow)"/>
+
+  <!-- Barra de navegador -->
+  <rect width="640" height="46" fill="#090610"/>
+  <circle cx="26" cy="23" r="5.5" fill="#f87171"/>
+  <circle cx="48" cy="23" r="5.5" fill="#fbbf24"/>
+  <circle cx="70" cy="23" r="5.5" fill="#34d399"/>
+  <rect x="100" y="12" width="440" height="22" rx="11" fill="#181126"/>
+  <text x="116" y="27" font-family="ui-monospace, monospace" font-size="11" fill="#9d8fd0">github.com/Ajsantiago02/template-lj</text>
+
+  <!-- Monograma y título -->
+  <rect x="48" y="86" width="72" height="72" rx="18" fill="url(#lj-accent)"/>
+  <text x="84" y="135" font-family="system-ui, sans-serif" font-size="36" font-weight="800" fill="#fff" text-anchor="middle">LJ</text>
+  <text x="140" y="118" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#ece7fb">Template LJ</text>
+  <text x="140" y="146" font-family="ui-monospace, monospace" font-size="12" fill="#8b83b8">Sistema de diseño modular · Open Source</text>
+
+  <!-- Bloques de código -->
+  <rect x="48" y="186" width="340" height="178" rx="12" fill="#0b0812" stroke="#241a3d"/>
+  <circle cx="70" cy="206" r="4" fill="#f87171"/>
+  <circle cx="86" cy="206" r="4" fill="#fbbf24"/>
+  <circle cx="102" cy="206" r="4" fill="#34d399"/>
+  <text x="66" y="242" font-family="ui-monospace, monospace" font-size="13" fill="#c4b5fd">.btn <tspan fill="#6b6390">{</tspan></text>
+  <text x="86" y="266" font-family="ui-monospace, monospace" font-size="13" fill="#22d3ee">border-radius<tspan fill="#6b6390">:</tspan> <tspan fill="#fbbf24">0.75rem</tspan><tspan fill="#6b6390">;</tspan></text>
+  <text x="86" y="290" font-family="ui-monospace, monospace" font-size="13" fill="#22d3ee">background<tspan fill="#6b6390">:</tspan> <tspan fill="#fbbf24">$brand</tspan><tspan fill="#6b6390">;</tspan></text>
+  <text x="66" y="314" font-family="ui-monospace, monospace" font-size="13" fill="#6b6390">}</text>
+  <rect x="66" y="334" width="190" height="8" rx="4" fill="#1d1530"/>
+
+  <!-- Swatches -->
+  <rect x="416" y="186" width="176" height="54" rx="10" fill="#8b5cf6"/>
+  <rect x="416" y="248" width="176" height="54" rx="10" fill="#22d3ee" opacity="0.85"/>
+  <rect x="416" y="310" width="176" height="54" rx="10" fill="#181126" stroke="#2c2150"/>
+</svg>
