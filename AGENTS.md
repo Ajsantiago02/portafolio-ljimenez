@@ -43,18 +43,20 @@ conocidos. Leerlo **antes** de tocar `index.html`.
 ## Datos de la sección de constancias y certificados
 
 La sección `#certificaciones` de `index.html` está construida con datos **verificados** extrayendo
-el texto de cada PDF con `pdftotext`. La clasificación en tres grupos es:
+el texto de cada PDF con `pdftotext`. Quedó organizada en **dos grupos**:
 
-1. **Cursos y certificaciones** (7) — cursos de IA, marca, estilo y atención al cliente.
+1. **Cursos y certificaciones** (10) — tarjetas `.cert-card` con modal. Cursos de IA, marca,
+   estilo, seguridad y atención al cliente, más los 3 que el usuario confirmó leyendo a mano
+   (Big School/MoureDev x2 y la constancia del curso de AWS).
 2. **Constancias de diseño gráfico** (9) — los archivos `Luis Armando Jiménez Santiago-N.pdf`.
    **OJO: no son cursos.** Son constancias de elaboración y presentación de carteles de la
    convocatoria «Conmemoración de Fechas Ambientales» de la SEP, 23 feb 2026. El número del
    archivo no sigue el orden de las fechas; el mapa está en `MEMORY.md`.
-3. **Otros documentos** (3) — PDFs escaneados sin texto, pendientes de identificar.
+   Se muestran como **lista compacta con enlace directo al PDF**, no como tarjetas con modal.
 
 ## Regla principal: nunca inventar contenido
 
-No escribir títulos, emisores, fechas, horas nidescripciones que no salgan del PDF. Antes de
+No escribir títulos, emisores, fechas, horas o descripciones que no salgan del PDF. Antes de
 agregar o corregir una tarjeta, extraer el dato real:
 
 ```bash
@@ -66,13 +68,16 @@ Este proyecto ya tuvo tarjetas con datos fabricados ("Brais Moure", "CCNUBIO",
 Se eliminaron. No reintroducir ese patrón.
 
 Si el PDF no tiene texto extraíble, dejarlo como "por identificar" y preguntar al usuario.
-Nunca adivinar.
+Nunca adivinar. Cuando el usuario lo confirme a mano, dejarlo anotado en `MEMORY.md` como
+**dato del usuario**, no como dato extraído del PDF.
 
 ## Otros documentos del proyecto
 
 - Sin build step, sin `package.json`. Se despliega tal cual (GitHub Pages).
 - Editar con cambios pequeños y verificables; evitar reescrituras masivas de `index.html`
-  (83 KB, 1395 líneas) porque los bloques largos fallan al no coincidir exactamente.
+  (94 KB, 1331 líneas) porque los bloques largos fallan al no coincidir exactamente.
+  Para reemplazar una sección completa, lo más seguro es un script de Python que corte por
+  números de línea, no un editor de texto.
 - Rutas dentro de `data-cert-url`: codificar espacios (`%20`), acentos (`%C3%A9`) y `@` (`%40`).
   El JS no codifica, asigna el valor crudo al `href`.
 - Clases CSS reutilizables: `.cert-card`, `.cert-badge`, `.cert-title`, `.cert-instructor`,
@@ -89,6 +94,6 @@ git diff --stat                         # ver el alcance real de lo modificado
 
 Y validar que toda URL de `data-cert-url` exista en disco con el script de `MEMORY.md`.
 
-Nota: `index.html` tiene un error de anidamiento **preexistente** (~línea 985, un `div` y un
+Nota: `index.html` tiene un error de anidamiento **preexistente** (~línea 920, un `div` y un
 `section` sin cerrar). No fue introducido por estos cambios. Si se corrige, avisar al usuario
 antes, porque puede alterar el layout.

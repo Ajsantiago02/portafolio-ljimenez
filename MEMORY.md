@@ -28,19 +28,30 @@ Los números de línea cambian con cada edición: verificar con `grep -n 'sectio
 ## Clasificación de `assets/certs` (VERIFICADA con pdftotext)
 
 19 PDFs. Todos están referenciados en la sección `#certificaciones`. Verificado: 0 rutas rotas,
-0 huérfanos, 0 duplicados.
+0 huérfanos, 0 duplicados. La sección quedó en **dos grupos** (antes eran tres: el de "Otros
+documentos" se eliminó al confirmar los 3 PDFs escaneados).
 
-### Grupo 1 — Cursos y certificaciones (7)
+### Grupo 1 — Cursos y certificaciones (10)
+
+Tarjetas con modal (`.cert-card` + `data-cert-url`).
 
 | Archivo | Título real | Emisor | Horas | Fecha |
 |---|---|---|---|---|
 | `2828_santiagoluis28394@gmail.com.pdf` | Domina la IA con Gemini | — | 2 h | 29 jul 2026 |
 | `2829_santiagoluis28394@gmail.com.pdf` | Google: IA Práctica para Marketing | — | 2 h | 20 ago 2026 |
 | `4007_santiagoluis28394@gmail.com.pdf` | IA y responsabilidad: creación de una IA positiva | — | 2 h | 27 ago 2026 |
+| `Certificado-Luis-...-tly8efaq.pdf` | Iniciación a la IA | Big School · MoureDev | — | 4 sep 2026 |
+| `Certificado-Luis-...-g2c07vaq.pdf` | Iniciación al Desarrollo con IA | Big School · MoureDev | — | jul 2026 |
 | `035fdb60-...-58799cdb4817_certificado.pdf` | Crea la identidad de tu negocio | Capacítate para el Empleo | 40 h | 12-17 ago 2026 |
 | `3695fb08-...-be24b9a1449d_certificado.pdf` | Postprocesadores de estilo | Capacítate para el Empleo | 13 h | 4-12 ago 2026 |
 | `d6a7a9be-...-bf02b06dfa59_certificado-1.pdf` | Representante telefónico | Capacítate para el Empleo | 28 h | 30 ago 2023 |
 | `04ac0c3f-...-1b4d97f69bfb_certificado-1.pdf` | Seguridad y privacidad en el manejo de información (Regulación) | Capacítate para el Empleo | 10 h | 30 ago 2023 |
+| `AWSseptiembre.pdf` | Amazon Web Services (AWS) | Constancia de curso | — | sep 2026 |
+
+**Nota sobre los 3 que no tienen texto.** Son PDFs escaneados, así que `pdftotext` no devuelve
+nada. El usuario leyó el contenido a ojo y lo confirmó: dos son de **Big School / MoureDev**
+(ambos cursos de iniciación a IA) y el tercero es la **constancia de su curso de AWS**. Esa
+información viene del usuario, no del PDF, así que está marcada como tal aquí.
 
 ### Grupo 2 — Constancias de diseño gráfico (9)
 
@@ -51,7 +62,7 @@ Convocatoria «Conmemoración de Fechas Ambientales», CDMX, 23 feb 2026.
 
 El número del archivo **no** sigue el orden de las fechas. Mapa real:
 
-| Fecha conmemorativa | Archivo |
+| Fecha | Archivo |
 |---|---|
 | 22 de marzo — Día Mundial del Agua | `-8.pdf` |
 | 22 de abril — Día Internacional de la Madre Tierra | `-9.pdf` |
@@ -63,16 +74,12 @@ El número del archivo **no** sigue el orden de las fechas. Mapa real:
 | 28 de junio — Día Mundial del Árbol | `-6.pdf` |
 | 3 de julio — Día Mundial Libre de Bolsas de Plástico | `-7.pdf` |
 
-### Grupo 3 — Otros documentos (3, PENDIENTES)
+**Estos NO usan `.cert-card` ni el modal.** A petición del usuario se simplificaron a una lista
+compacta: `<ul>` + `<a href="...">` directo al PDF, con la fecha en monoespaciado y el nombre
+del cartel. No agregan peso visual ni necesitan el JS. Si se cambia este grupo, mantener el
+patrón de enlace directo.
 
-PDFs **escaneados, sin capa de texto** (`pdftotext` no devuelve nada). No se les inventó
-título: se muestran como "por identificar". Hay que abrirlos a ojo y CONFIRMAR con el usuario.
-
-| Archivo | Lo que se sabe |
-|---|---|
-| `AWSseptiembre.pdf` | Por el nombre parece AWS. Creado 25 sep 2026. Sin título ni metadatos. |
-| `Certificado-Luis-Armando-Jimenez-Santiago-g2c07vaq.pdf` | Creado 14 jul 2026. 8.8 MB (es imagen). |
-| `Certificado-Luis-Armando-Jimenez-Santiago-tly8efaq.pdf` | Creado 4 sep 2026. 9.2 MB (es imagen). |
+Ya no existe un grupo 3: los 3 documentos escaneados quedaron identificados.
 
 ## Decisión clave: nunca inventar contenido
 
@@ -163,7 +170,7 @@ PY
 
 ## Pendientes
 
-- [ ] Confirmar título real de los 3 PDFs escaneados del Grupo 3.
+- [x] Confirmar título real de los 3 PDFs escaneados → Big School/MoureDev (x2) + curso AWS.
 - [ ] Decidir qué hacer con la carpeta duplicada `cosntacias/`.
-- [ ] Corregir el error de anidamiento de la línea ~985 (preexistente).
+- [ ] Corregir el error de anidamiento de la línea ~920 (preexistente).
 - [ ] Considerar miniaturas (thumbnails) de los carteles en el Grupo 2 en vez de solo abrir el PDF.
